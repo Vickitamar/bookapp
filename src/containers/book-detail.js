@@ -15,7 +15,6 @@ class BookDetail extends Component {
 				<div className="title">{this.props.book.title}</div>
 				<div className="pages">Pages: {this.props.book.pages}</div>
 				<div className="description">{this.props.book.description}</div>
-				<img className="des_img" src={this.props.book.image} alt="piano" />
 			</div>
 		);
 	}
