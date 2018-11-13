@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import piano from '../piano3.jpg';
-import south from './south.jpg';
 import Modal from './modal';
 import ModalContent from '../components/modalContent'
 

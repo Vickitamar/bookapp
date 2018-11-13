@@ -27,6 +27,7 @@ class BookList extends React.Component<Props> {
 	renderList() {
 		return this.props.books.map((book) => {
 			return (
+				<div>
 				<li
 				key={book.title}
 				onClick={this.toggleModal}
@@ -38,6 +39,14 @@ class BookList extends React.Component<Props> {
 					</div>
 				</div>
 				</li>
+				<Modal
+					show={this.state.isOpen}
+					onClose={this.toggleModal}
+				>
+				{/*<ModalContent selectbook={this.props.selectBook(book)}/>*/}
+				</Modal>
+				</div>
+
 			);
 		});
 	}
@@ -48,15 +57,30 @@ class BookList extends React.Component<Props> {
 				<ul className="list-group col-sm-4">
 						{this.renderList()}
 				</ul>
-				<Modal
+{/*				<Modal
 					show={this.state.isOpen}
 					onClose={this.toggleModal}
 				>
 					<ModalContent />
-				</Modal>
+				</Modal>*/}
 			</div>
 		)
 	}
 }
 
-export default BookList
+
+function mapStateToProps(state) {
+	//whatever gets returns from here will show up as props inside of BookList
+	return {
+		books: state.books2018
+	};
+}
+
+//Anything returned from this function will end up as props on the Booklist container
+function mapDispatchToProps(dispatch) {
+	//whenever the action selectBook is called, the result should be passed to all our reducers.
+	return bindActionCreators({ selectBook: selectBook }, dispatch) //new prop: action creator, dispatch
+}
+
+// promote BookList from a component to a container  -  it needs to know about this dispatch method, selectBook. Makes it avaliable as a prop.
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);

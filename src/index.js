@@ -23,7 +23,7 @@ ReactDOM.render(
 				<Header />
 				<Menu />
 					<Switch>
-							<Route path="/2017" component={Reading2017} />
+							{/*<Route path="/2017" component={Reading2017} />*/}
 							<Route path="/2018/detail" component={Reading2018Detail} />
 							<Route path="/" component={Reading2018} />
 					</Switch>
